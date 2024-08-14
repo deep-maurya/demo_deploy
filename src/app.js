@@ -34,7 +34,7 @@ app.get("/", async(req, res) => {
   res.json({message:'response from server'});
 });
 
-app.post("/register", Multer_upload.single("image"), async (req, res) => {
+app.post("/register", async (req, res) => {
   let status = 0;
   let message = "All fields Are required name,email,password,image";
   let return_data = [];
