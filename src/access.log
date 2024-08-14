@@ -167,3 +167,4 @@
 ::ffff:127.0.0.1 - - [12/Aug/2024:11:15:10 +0000] "GET /event/delete HTTP/1.1" 404 151 "-" "Thunder Client (https://www.thunderclient.com)"
 ::1 - - [14/Aug/2024:06:48:03 +0000] "GET / HTTP/1.1" 200 34 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 ::1 - - [14/Aug/2024:06:48:03 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:9090/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+::1 - - [14/Aug/2024:06:56:02 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
