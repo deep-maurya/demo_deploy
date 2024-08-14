@@ -20,8 +20,7 @@ const userSchema = new Schema({
         required:true
     },
     profile_image:{
-        type:String,
-        require:true
+        type:String
     }
 })
 
