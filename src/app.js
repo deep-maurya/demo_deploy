@@ -49,18 +49,18 @@ app.post("/register",Multer_upload.single('image'), async (req, res) => {
     message = "Email is Already Registered";
     if (emailFind == null) {
       console.log("step3")
-      // message = "Image upload failed";
-      // if (req.file) {
+      message = "Image upload failed";
+      if (req.file) {
         console.log("step4")
         try {
-          // const profile_image = await cloudinary_upload(req);
-          const hashpass =await bcrypt.hash(password, 20);
+          const profile_image = await cloudinary_upload(req);
+          const hashpass =await bcrypt.hash(password, 10);
           const newUser = {
             id: parseInt(Math.random() * 10000000),
             name,
             email,
             password:hashpass,
-            // profile_image,
+            profile_image,
           };
           const new_user = await userModel.create(newUser);
           message = "You are registered";
@@ -71,7 +71,7 @@ app.post("/register",Multer_upload.single('image'), async (req, res) => {
           //res.status(500).json({ message: `Image upload failed: ${error.message}` });
           message = `Image upload failed: ${error.message}`;
         }
-      // }
+      }
     }
   }
   res.json({ status: status, message: message, data: return_data });
