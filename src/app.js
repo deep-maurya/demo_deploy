@@ -4,6 +4,7 @@ const path = require("path");
 const morgan = require("morgan");
 const bcrypt = require("bcrypt");
 var jwt = require('jsonwebtoken');
+const cors = require("cors");
 require("dotenv").config();
 const {
   validate,
@@ -19,6 +20,7 @@ const { eventRouter } = require("./router/eventRouter");
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 app.use(express.static("public"));
 app.use('/event',eventRouter)
 
