@@ -14,7 +14,7 @@ const {
 const { get_user_data, add_user } = require("./utils");
 const { DBConnect } = require("./config/Db");
 const { userModel } = require("./Module/userModule");
-const { cloudniary_upload } = require("./utils/cloudinary_uploader");
+const { cloudinary_upload } = require("./utils/cloudinary_uploader");
 const { Multer_upload } = require("./utils/multer_upload");
 const { eventRouter } = require("./router/eventRouter");
 
@@ -34,20 +34,26 @@ app.get("/", async(req, res) => {
   res.json({message:'response from server'});
 });
 
-app.post("/register", async (req, res) => {
+app.post("/register",Multer_upload.single('image'), async (req, res) => {
   let status = 0;
-  let message = "All fields Are required name,email,password,image";
+  //console.log(req.file)
+  console.log("step1")
+  let message = "All fields Are required name,email,password";
   let return_data = [];
   const { name, email, password } = req.body;
+  //console.log(req)
   if (name && email && password && name != "" && email != "" && password != "") {
     const emailFind = await userModel.findOne({ email: email });
     //console.log(emailFind);
+    console.log("step2")
     message = "Email is Already Registered";
     if (emailFind == null) {
+      console.log("step3")
       message = "Image upload failed";
       if (req.file) {
+        console.log("step4")
         try {
-          const profile_image = await cloudniary_upload(req);
+          const profile_image = await cloudinary_upload(req);
           const hashpass =await bcrypt.hash(password, 20);
           const newUser = {
             id: parseInt(Math.random() * 10000000),
